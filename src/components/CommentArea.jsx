@@ -3,7 +3,20 @@ import CommentList from "./CommentList";
 import AddComment from "./AddComment";
 
 class CommentArea extends React.Component {
+    constructor(props) {
+    super(props);
+    this.state = {
+      comments: [],
+    };
+  }
+       setComments=(comments)=>{
+
+    this.setState({comments:comments})
+
+  }
+
   render() {
+
     return (
       <div className="d-flex flex-column">
         <div className="my-1">
@@ -14,8 +27,8 @@ class CommentArea extends React.Component {
             alt="img-caption"
           />
         </div>
-        <CommentList book={this.props.book} />
-        <AddComment book={this.props.book} />
+        <CommentList book={this.props.book} setComments={this.setComments} comments={this.state.comments} />
+        <AddComment book={this.props.book} setComments={this.setComments}  />
       </div>
     );
   }

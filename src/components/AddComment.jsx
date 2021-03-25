@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
+import { getComments } from "../utils";
 
 class AddComment extends React.Component {
   constructor(props) {
@@ -41,8 +42,9 @@ class AddComment extends React.Component {
       );
 
       if (response.ok) {
-        console.log("Comment added");
-        console.log(response);
+        this.props.setComments(await getComments(this.state.commentObj.elementId))
+        console.log(await getComments(this.state.commentObj.elementId))
+ 
       } else {
         console.log("Error happened");
       }
