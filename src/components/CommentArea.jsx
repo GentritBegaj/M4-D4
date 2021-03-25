@@ -6,11 +6,11 @@ class CommentArea extends React.Component {
   render() {
     return (
       <div className="d-flex flex-column">
-        <div>
+        <div className="my-1">
           <img
             src={this.props.book.img}
-            height="50px"
-            width="50px"
+            height="100px"
+            width="200px"
             alt="img-caption"
           />
         </div>

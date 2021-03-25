@@ -18,7 +18,7 @@ class SingleBook extends React.Component {
         />
         <Card.Body>
           <Card.Title>{this.props.book.title.slice(0, 15)} ...</Card.Title>
-          <Card.Text>{this.props.book.price}</Card.Text>
+          <Card.Text>${this.props.book.price}</Card.Text>
           <Button variant="success">Add to Cart</Button>
           {this.state.selected && <CommentArea book={this.props.book} />}
         </Card.Body>

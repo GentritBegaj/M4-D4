@@ -22,7 +22,6 @@ class CommentList extends React.Component {
           },
         }
       );
-      console.log(response);
       if (response.ok) {
         let comments = await response.json();
         console.log(comments);
@@ -37,9 +36,12 @@ class CommentList extends React.Component {
 
   render() {
     return (
-      <ListGroup variant="flush">
+      <ListGroup variant="flush" className="mb-1">
         {this.state.comments.map((comment) => (
-          <SingleComment comment={comment} />
+          <SingleComment
+            key={Math.ceil(Math.random() * 1000000)}
+            comment={comment}
+          />
         ))}
       </ListGroup>
     );

@@ -2,8 +2,11 @@ import React from "react";
 import { ListGroup, Button } from "react-bootstrap";
 
 class SingleComment extends React.Component {
+  state = {
+    comment: this.props.comment,
+  };
   deleteComment = async (e) => {
-    console.log(e);
+    console.log(e.target.id);
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/" + e.target.id,
@@ -17,9 +20,9 @@ class SingleComment extends React.Component {
       );
 
       if (response.ok) {
-        alert("Comment deleted");
+        console.log("Comment deleted");
       } else {
-        alert("Error happened");
+        console.log("Error happened");
       }
     } catch (error) {
       console.log(error);
@@ -28,10 +31,14 @@ class SingleComment extends React.Component {
 
   render() {
     return (
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between mt-1">
         <ListGroup.Item>{this.props.comment.comment}</ListGroup.Item>
-        <Button id={this.props.comment.elementId} onClick={this.deleteComment}>
-          x
+        <Button
+          className="btn-sm btn"
+          id={this.props.comment._id}
+          onClick={this.deleteComment}
+        >
+          X
         </Button>
       </div>
     );
