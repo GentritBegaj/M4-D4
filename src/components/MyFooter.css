@@ -1,0 +1,15 @@
+.footer-div {
+  background-color: black;
+}
+
+a {
+  color: rgb(160, 148, 148);
+}
+a:hover {
+  color: rgb(255, 245, 245);
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
