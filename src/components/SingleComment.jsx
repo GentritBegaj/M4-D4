@@ -1,18 +1,12 @@
 import React from "react";
 import { ListGroup, Button } from "react-bootstrap";
-import {deleteComment} from '../utils'
+import { deleteComment } from "../utils";
 
 class SingleComment extends React.Component {
-  state = {
-    comment: this.props.comment,
+  removeComment = async (commentId, bookId) => {
+    const comments = await deleteComment(commentId, bookId);
+    this.props.setComments(comments);
   };
-
-  removeComment=async(commentId,bookId)=>{
-   const comments= await deleteComment(commentId,bookId)
-   this.props.setComments(comments)
-
-  }
-  
 
   render() {
     return (
@@ -21,7 +15,12 @@ class SingleComment extends React.Component {
         <Button
           className="btn-sm btn"
           id={this.props.comment._id}
-          onClick={()=> this.removeComment(this.props.comment._id,this.props.comment.elementId)}
+          onClick={() =>
+            this.removeComment(
+              this.props.comment._id,
+              this.props.comment.elementId
+            )
+          }
         >
           X
         </Button>
